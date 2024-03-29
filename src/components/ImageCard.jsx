@@ -1,12 +1,16 @@
 import React from 'react';
 
 
-function ImageCard({ photo}) {
+function ImageCard( {photo}) {
   return (
     <div>
-      <img src="" alt="{alt_description} "/>
+      <img src={photo.urls.small} alt={photo.description} />
+      
     </div>
   );
 }
+
+
+
 
 export default ImageCard;

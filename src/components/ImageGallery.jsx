@@ -2,13 +2,13 @@ import React from 'react';
 import ImageCard from './ImageCard';
 
 
-function ImageGallery({ photos }) {
+function ImageGallery(photos) {
   return (
     <ul>
       {Array.isArray(photos) &&
         photos.map(photo => (
-          <li key={1}>
-            <ImageCard photos={photo} />
+          <li key={photo.id}>
+            <ImageCard photo={photo} />
           </li>
         ))}
     </ul>

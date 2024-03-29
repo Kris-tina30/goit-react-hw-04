@@ -91,17 +91,21 @@ const API_KEY = `vjNpt77wuSKbGik2rgzet3FxmzAN6s7lF6jdYTlGv0I`;
 
 function App() {
   const [photos, setPhotos] = useState([null]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchPhotos() {
+      setIsLoading(true);
       const { data } = await axios.get(BASE_URL, {
         params: {
           client_id: API_KEY,
+
         },
       });
       console.log('data:', data);
       setPhotos(data);
-      console.log('photos:', data);
+      console.log('photos:', data[0].id);
+      setIsLoading(false);
 
       
       // try {
@@ -122,11 +126,13 @@ function App() {
   return (
     <div>
       <h1>Photo gallery</h1>
+      {isLoading && <div>Loading....</div>}
+
       {/* <ErrorMessage />
       <Loader />
       <LoadMoreBtn />
       <SearchBar /> */}
-      <ImageGallery photos={photos} />
+      <ImageGallery photos={[photos]} />
       {/* <ImageModal /> */}
     </div>
   );
