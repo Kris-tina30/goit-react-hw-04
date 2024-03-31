@@ -14,3 +14,4 @@ const LoadMoreBtn = ({ onIncrement }) => {
 };
 
 export default LoadMoreBtn;
+

@@ -1,29 +1,31 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 
 import toast from 'react-hot-toast';
 
-const FORM_INITIAL_VALUES = {
-  searchPhoto: '',
-};
-
 const SearchBar = ({ onSubmit }) => {
-  const handleSubmit = values => {
-    if (values.searchPhoto.trim() === '') {
+  const [searchPhoto, setSearchPhoto] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (e.searchPhoto === '') {
       toast.error('Please enter search term!');
       return;
     }
-    onSubmit(values.searchPhoto);
+    onSubmit(searchPhoto);
+    setSearchPhoto('');
   };
 
   return (
     <header>
-      <form onSubmit={handleSubmit} initialvalues={FORM_INITIAL_VALUES}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="searchPhoto"
+          value={searchPhoto}
+          name="query"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
+          onChange={e => setSearchPhoto(e.target.value)}
         />
         <button type="submit">Search</button>
       </form>

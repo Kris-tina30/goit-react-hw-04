@@ -14,3 +14,7 @@ function ImageGallery({ photos }) {
 }
 
 export default ImageGallery;
+
+
+
+

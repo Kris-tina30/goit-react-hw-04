@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 import './App.css';
 import ImageGallery from './components/ImageGallery';
-// 
-import { reguestPhotos, reguestPhotosByQuery } from './components/services/api';
+//reguestPhotos,
+import { searchPhoto } from './components/services/api';
 import Loader from './components/Loader';
 import ErrorMessage from './components/ErrorMessage';
 import SearchBar from './components/SearchBar';
@@ -15,34 +15,37 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   const [query, setQuery] = useState('');
-  const [page, setPage] = useState('');
+  const [page, setPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // useEffect(() => {
+  //   async function fetchPhotos() {
+  //     try {
+  //       setIsLoading(true);
+  //       const data = await reguestPhotos();
+
+  //       setPhotos(data);
+
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       setIsError(true);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchPhotos();
+  // }, []);
 
   useEffect(() => {
-    async function fetchPhotos() {
-      try {
-        setIsLoading(true);
-        const data = await reguestPhotos();
-
-        setPhotos(data);
-
-        setIsLoading(false);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
+    if (!query) {
+      return;
     }
 
-    fetchPhotos();
-  }, []);
-
-  useEffect(() => {
-    if (!query) return;
-
-    async function fetchPhotosByQuery() {
+    async function handleSearch() {
       try {
         setIsLoading(true);
-        const data = await reguestPhotosByQuery(query, page);
+        const data = await searchPhoto(query, page);
 
         setPhotos(data);
 
@@ -54,30 +57,30 @@ function App() {
       }
     }
 
-    fetchPhotosByQuery();
+    handleSearch();
   }, [query, page]);
-
-  const onSetSearchQuery = searchPhoto => {
-    setQuery(searchPhoto);
-  };
 
   const onSetPage = () => {
     setPage(prevPage => prevPage + 1);
   };
 
+  const searchInput = query => {
+    setQuery(query);
+    setPhotos([]);
+    setPage(1);
+  };
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div>
       <h1>Photo gallery</h1>
-      {isLoading && <Loader />}
-
-      {isError && <ErrorMessage />}
-
-      <SearchBar onSubmit={onSetSearchQuery} />
-
-      <LoadMoreBtn onIncrement={onSetPage} />
-
+      <SearchBar onSubmit={searchInput} />
+      {isLoading && <Loader />} {isError && <ErrorMessage />}
       <ImageGallery photos={photos} />
-      {/* <ImageModal /> */}
+      <LoadMoreBtn onIncrement={onSetPage} />
+      {/* <ImageModal onClick={openModal} isOpen={isModalOpen} onClose={closeModal} /> */}
     </div>
   );
 }
