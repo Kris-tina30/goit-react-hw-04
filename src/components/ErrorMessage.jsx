@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const ErrorMessage = ({message = "Oops, something went wrong, please reload the page!"}) => {
+const ErrorMessage = ({ message = 'Oops, something went wrong, please reload the page!' }) => {
   return <p>{message}</p>;
-}
+};
 
-export default ErrorMessage
+export default ErrorMessage;

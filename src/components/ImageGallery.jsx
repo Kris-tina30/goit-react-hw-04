@@ -1,12 +1,12 @@
-import React from 'react';
 import ImageCard from './ImageCard';
+import css from './ImageGallery.module.css';
 
-function ImageGallery({ photos }) {
+function ImageGallery({ photos, onImageClick }) {
   return (
-    <ul>
+    <ul className={css.galleryList}>
       {photos.map(photo => (
-        <li key={photo.id}>
-          <ImageCard photo={photo} />
+        <li className={css.galleryItem} key={photo.id}>
+          <ImageCard photo={photo} onImageClick={onImageClick} />
         </li>
       ))}
     </ul>
@@ -14,7 +14,3 @@ function ImageGallery({ photos }) {
 }
 
 export default ImageGallery;
-
-
-
-

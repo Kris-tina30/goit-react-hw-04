@@ -1,12 +1,12 @@
 import React from 'react';
-import Modal from 'react-modal';
 
-const ImageModal = ({ isOpen, onClose  }) => {
+const ImageModal = ({ imageUrl }) => {
   return (
-    <>
-      <button onClick={openModal}>Open modal</button>
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
-    </>
+    <div>
+      <div>
+        <img src={imageUrl} alt="Large" width="800" height="600" />
+      </div>
+    </div>
   );
 };
 

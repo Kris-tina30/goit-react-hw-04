@@ -1,12 +1,10 @@
 import React from 'react';
+import css from './LoadMoreBtn.module.css';
 
 const LoadMoreBtn = ({ onIncrement }) => {
-  const handleLoadMore = () => {
-    onIncrement();
-  };
   return (
     <div>
-      <button type="button" onClick={handleLoadMore}>
+      <button className={css.loadMoreBtn} type="button" onClick={() => onIncrement()}>
         Load more
       </button>
     </div>
@@ -14,4 +12,3 @@ const LoadMoreBtn = ({ onIncrement }) => {
 };
 
 export default LoadMoreBtn;
-

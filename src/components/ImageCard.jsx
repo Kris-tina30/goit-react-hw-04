@@ -1,10 +1,10 @@
 import React from 'react';
+import css from './ImageCard.module.css';
 
-function ImageCard({ photo }) {
+function ImageCard({ photo, onImageClick }) {
   return (
-    <div>
-      <img src={photo.urls.thumb} alt={photo.description} />
-      <p>{photo.description}</p>
+    <div onClick={() => onImageClick(photo.urls.regular, photo.description)}>
+      <img className={css.image} src={photo.urls.small} alt={photo.description} />
     </div>
   );
 }

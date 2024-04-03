@@ -1,7 +1,9 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { FcSearch } from 'react-icons/fc';
 
 import toast from 'react-hot-toast';
+import css from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
   const [searchPhoto, setSearchPhoto] = useState('');
@@ -17,8 +19,14 @@ const SearchBar = ({ onSubmit }) => {
 
   return (
     <header>
-      <form onSubmit={handleSubmit}>
+      <form className={css.searchForm} onSubmit={handleSubmit}>
+        <button className={css.searchButton} type="submit">
+          <span>
+            <FcSearch className={css.icon} />
+          </span>
+        </button>
         <input
+          className={css.searchInput}
           type="text"
           value={searchPhoto}
           name="query"
@@ -27,7 +35,6 @@ const SearchBar = ({ onSubmit }) => {
           placeholder="Search images and photos"
           onChange={e => setSearchPhoto(e.target.value)}
         />
-        <button type="submit">Search</button>
       </form>
     </header>
   );
