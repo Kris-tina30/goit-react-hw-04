@@ -1,21 +1,20 @@
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//     width: '800',
-//     height: '600',
-//     objectFit: 'cover',
-//     padding: ' 0',
-//     borderRadius: 'none',
-//   },
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    padding: ' 0',
+    borderRadius: 'none',
+    border: 'none',
+    width: '800px',
+    height: '600px',
+  },
 
-//   overlay: {
-//     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-//   },
-// };
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+};
 
-// export default customStyles;
+export default customStyles;

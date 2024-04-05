@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 import './App.css';
+import customStyles from './components/Modal.slyle';
 
 import ImageGallery from './components/ImageGallery';
 
@@ -85,6 +86,7 @@ function App() {
         onRequestClose={closeModal}
         ariaHideApp={false}
         contentLabel="Image Modal"
+        style={customStyles}
       >
         <ImageModal imageUrl={selectedImage} />
       </Modal>
