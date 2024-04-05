@@ -1,10 +1,9 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
 import './App.css';
-import customStyles from './components/Modal.slyle';
 
 import ImageGallery from './components/ImageGallery';
 
@@ -81,7 +80,12 @@ function App() {
 
       <ImageGallery photos={photos} onImageClick={openModal} />
 
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal} style={customStyles}>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        contentLabel="Image Modal"
+      >
         <ImageModal imageUrl={selectedImage} />
       </Modal>
       {photos.length > 0 && page < totalPage && <LoadMoreBtn onIncrement={onSetPage} />}

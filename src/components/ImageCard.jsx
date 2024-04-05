@@ -3,8 +3,13 @@ import css from './ImageCard.module.css';
 
 function ImageCard({ photo, onImageClick }) {
   return (
-    <div onClick={() => onImageClick(photo.urls.regular, photo.description)}>
-      <img className={css.image} src={photo.urls.small} alt={photo.description} />
+    <div>
+      <img
+        onClick={() => onImageClick(photo.urls.regular, photo.description)}
+        className={css.image}
+        src={photo.urls.small}
+        alt={photo.description}
+      />
     </div>
   );
 }

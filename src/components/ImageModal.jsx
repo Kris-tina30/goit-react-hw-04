@@ -1,13 +1,7 @@
 import React from 'react';
 
 const ImageModal = ({ imageUrl }) => {
-  return (
-    <div>
-      <div>
-        <img src={imageUrl} alt="Large" width="800" height="600" />
-      </div>
-    </div>
-  );
+  return <img src={imageUrl} alt="Large" />;
 };
 
 export default ImageModal;
