@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 import './App.css';
-import customStyles from './components/Modal.slyle';
 
 import ImageGallery from './components/ImageGallery';
 
@@ -78,18 +77,8 @@ function App() {
       {isError && <ErrorMessage />}
       <SearchBar onSubmit={searchInput} />
       {isLoading && <Loader />}
-
       <ImageGallery photos={photos} onImageClick={openModal} />
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        ariaHideApp={false}
-        contentLabel="Image Modal"
-        style={customStyles}
-      >
-        <ImageModal imageUrl={selectedImage} />
-      </Modal>
+      <ImageModal imageUrl={selectedImage} isOpen={isModalOpen} onRequestClose={closeModal} />
       {photos.length > 0 && page < totalPage && <LoadMoreBtn onIncrement={onSetPage} />}
     </div>
   );
